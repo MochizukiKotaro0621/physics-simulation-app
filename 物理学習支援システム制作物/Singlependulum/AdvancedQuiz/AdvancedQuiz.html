@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>高校物理の時間</title>
+    <link rel="stylesheet" href="AdvancedQuiz.css"> <!-- 外部CSSファイルをリンク -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js">
+    </script>
+</head>
+<body>    
+    <div class="container">
+        <h1>高校物理の時間</h1>
+        <!--力学-->
+        <!-- 小さく配置したい見出し -->
+        <p class="small-header">1．力学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1．振り子の運動</p>
+        <h2>1-2．単振り子クイズ2</h2>
+        <!--参考サイト-->
+        <!--https://rikeilabo.com/pendulum-movement-->
+        <!--https://yuzupa.com/furiko/-->
+        <!--https://www.youtube.com/watch?v=wkiFqukxaM8-->
+        <hr>
+        <h2 class="section-title">学習の目標</h2>
+        <hr>
+        <h3>１．単振り子応用原理を理解する</h3>
+        <p>振り子のパラメータを変えたとき、周期がどう変わるかを理解します。</p>
+        
+        <h3 >２．振り子の動きを予測し、クイズで確認する</h3>
+        <p>学んだ知識をもとに、振り子の動きを予測し、クイズでその理解を確認します。</p>
+        <div style="text-align: center;">
+            <img src="./運動方程式図.png" alt="運動方程式図" >
+        </div>
+        <br>
+        <hr>
+        <h2 class="section-title">応用問題1</h2>
+        <hr><br>
+        <!-- シミュレーションエリア -->
+
+        <!-- Canvasとボタンをまとめるコンテナ -->
+        <div class="canvas-container">
+            <!-- 設定エリア -->
+            <div class="controls">
+                <label for="theta">初期角度:</label>
+                <input type="number" id="theta" value="30" max="30" min="30" step="0" oninput="init()"> [°]
+                <label for="L1">振り子の長さ:</label>
+                <input type="number" id="L" value="100" max="100" min="100" step="0" oninput="init()"> [m]<br>
+                <label for="a">振り子２は上に，３は右にかかる加速度</label>
+                <input type="number" id="a" value="5" max="10" min="1" step="1" oninput="init()"> [m/s^2]
+                
+            </div>
+
+            <!-- Canvasの下に配置するボタン -->
+            <div class="button-group">
+                <!-- 問題 -->
+                <div>
+                    <p>以下は、3つの振り子に関する説明です。それぞれの説明を読んで、**誤った説明**を選んでください。</p>
+                    <p>※選択し回答を押すとアニメーションが開始します（アニメーションは30秒でリセットされます）</p>
+
+                    <!-- 各振り子の説明 -->
+                    <ol>
+                        <li>
+                            **振り子1（標準条件）**:  
+                            この振り子の周期は、長さ \( L \) と重力加速度 \( g \) によってのみ決まり、初期角度が小さい場合、周期に影響を与えない。
+                        </li>
+                        <li>
+                            **振り子2（鉛直方向の上に加速度が加わる場合）**:  
+                            鉛直方向に加速度 \( a \) が加わると、見かけの重力加速度 \( g_{\text{eff}} = g + a \) が増加するため、周期は影響を受ける。
+                        </li>
+                        <li>
+                            **振り子3（水平方向の右に加速度が加わる場合）**:  
+                            水平方向に加速度 \( a \) が加わると、見かけの重力加速度は変化しないため、周期は影響を受けない。
+                        </li>
+                    </ol>
+
+                    <!-- 選択肢 -->
+                    <input type="radio" name="q1" id="q101" value="A">
+                    <label for="q101">A. 振り子1に関する説明が誤っている</label><br>
+
+                    <input type="radio" name="q1" id="q102" value="B">
+                    <label for="q102">B. 振り子2に関する説明が誤っている</label><br>
+
+                    <input type="radio" name="q1" id="q103" value="C">
+                    <label for="q103">C. 振り子3に関する説明が誤っている</label><br>
+
+                    <input type="radio" name="q1" id="q104" value="D">
+                    <label for="q104">D. すべて正しい説明である</label><br><br>
+                    <!-- Canvas領域 -->
+                    <canvas id="myCanvas" width="800" height="300"></canvas>
+                    <!-- 回答ボタン -->
+                    <input id="btnAnime" class="btn" type="button" value="回答＆アニメーション開始" disabled onclick="startAnime()">
+                    <span id="info">&nbsp;&nbsp;時間 : 0.00s</span>
+                    <p class="answer"></p> <!-- ここで answer を変数に連携 -->
+                </div>
+            </div>
+        </div>
+
+        <script src="AdvancedQuiz1.js"></script>
+
+        <div style="height: 50px;"></div>
+        <!-- 前項目・次項目へのボタン -->
+        <div class="navigation-buttons">
+            <a href="../Overview/Overview.html" class="nav-button">前項目へ</a>
+            <a href="../../home/physics-home.html" class="nav-button">次項目へ</a>
+        </div>
+        <!-- フッターの前に空白を追加するための要素 -->
+        <div style="height: 200px;"></div>
+    </div>
+    
+    <footer>
+        © 2024 高校物理の時間
+    </footer>
+    
+</body>
+</html>

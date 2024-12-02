@@ -1,0 +1,133 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    border-bottom: 4px solid #666666;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+/* 小さく配置する見出しのスタイル */
+.small-header {
+    font-size: 1.1em;    /* 小さなフォントサイズ */
+    color: #000000;         /* 色を薄めに設定 */
+    margin-bottom: -20px;  /* 下の見出しとの間隔を調整 */
+}
+hr {
+    border: none;
+    border-bottom: 7px solid #666666; /* 横線の色と高さ */
+}
+.section-title {
+    position: relative;
+    padding-left: 20px; /* テキストと■の間にスペースを追加 */
+}
+
+.section-title::before {
+    content: "■";           /* ■の文字 */
+    position: absolute;
+    left: 0;                /* ■をテキストの左側に配置 */
+    color: #6495ED;            /* ■の色 */
+    font-size: 1.2em;       /* ■のサイズ */
+}
+/* サブメニュー */
+.sub-menu {
+    display: flex;                /* フレックスボックスを使用 */
+    flex-wrap: wrap;              /* アイテムが横に収まりきらない場合、折り返しを許可 */
+    list-style-type: none;        /* リストのデフォルトマーカーを除去 */
+    padding: 0;
+    margin-top: 5px;
+}
+
+.sub-menu li {
+    width: 50%;                   /* 各アイテムの幅を50%に設定して2列にする */
+    margin: 0px;                /* 上下の余白を調整 */
+}
+
+.sub-menu a {
+    text-decoration: none;        /* リンクの下線を除去 */
+    color: #000000;               /* リンクのテキスト色を設定 */
+    padding: 5px 0;
+    display: block;
+    padding-left: 20px;
+    position: relative;           /* 疑似要素の位置調整のため */
+}
+
+.sub-menu a::before {
+    content: "> ";                /* 各リンクの前に > を追加 */
+    color: #6495ED;                  /* 装飾文字の色 */
+    position: absolute;
+    left: 0;
+}
+.sub-menu a:hover {
+    color: #6495ED;             /* カーソルが来た時のテキスト色 */
+}
+.section-title {
+    position: relative;
+    padding-left: 30px; /* テキストと■の間にスペースを追加 */
+}
+
+.section-title::before {
+    content: "★";           /* ★の文字 */
+    position: absolute;
+    left: 0;                /* ■をテキストの左側に配置 */
+    color: #ff0000be;            /* ■の色 */
+    font-size: 1.0em;       /* ■のサイズ */
+}
+
+/*サブメニュー*/
+
+/*フッター*/
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+/*フッター*/
+/* フレックスボックスでCanvasとコントロールを横並びに配置 */
+.flex-container {
+    display: flex;
+    align-items: flex-start; /* 縦方向の揃えを固定 */
+    gap: 20px; /* Canvasとコントロールの間にスペースを設定 */
+}
+/*次前項目*/
+.navigation-buttons {
+    display: flex;
+    justify-content: flex-end; /* 右寄せ */
+    gap: 10px; /* ボタン間のスペース */
+    padding: 5px 0;
+}
+
+/* ボタンスタイル */
+.nav-button {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #6495ED; /* 青い背景色 */
+    color: #ffffff; /* 白い文字 */
+    font-weight: bold; /* 太文字 */
+    text-decoration: none; /* 下線を削除 */
+    border-radius: 2px; /* ボタンの角を少し丸める */
+    font-size: 12px;
+}
+
+.nav-button:hover {
+    background-color: #053b9e; /* ホバー時の背景色（濃い青） */
+}
+
+
+
+

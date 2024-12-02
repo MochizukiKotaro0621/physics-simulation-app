@@ -1,0 +1,94 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    border-bottom: 4px solid #666666;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+h2 {
+    border-left: 12px solid #333; /* 縦線の幅と色を設定 */
+    padding-left: 10px;           /* テキストと縦線の間にスペースを追加 */
+    margin-top: 20px;
+    margin-bottom: 10px;          /* 下線前に空白を追加 */
+    color: #333;
+}
+hr {
+    border: none;
+    border-bottom: 2px solid #666666; /* 横線の色と高さ */
+    margin-top: 10px;                 /* h2 との間隔 */
+    margin-bottom: 20px;              /* 横線と次の要素の間隔 */
+}
+.section-title {
+    position: relative;
+    padding-left: 20px; /* テキストと■の間にスペースを追加 */
+}
+
+.section-title::before {
+    content: "■";           /* ■の文字 */
+    position: absolute;
+    left: 0;                /* ■をテキストの左側に配置 */
+    color: #6495ED;            /* ■の色 */
+    font-size: 1.2em;       /* ■のサイズ */
+}
+/* サブメニュー */
+.sub-menu {
+    display: flex;                /* フレックスボックスを使用 */
+    flex-wrap: wrap;              /* アイテムが横に収まりきらない場合、折り返しを許可 */
+    list-style-type: none;        /* リストのデフォルトマーカーを除去 */
+    padding: 0;
+    margin-top: 5px;
+}
+
+.sub-menu li {
+    width: 50%;                   /* 各アイテムの幅を50%に設定して2列にする */
+    margin: 0px;                /* 上下の余白を調整 */
+}
+
+.sub-menu a {
+    text-decoration: none;        /* リンクの下線を除去 */
+    color: #000000;               /* リンクのテキスト色を設定 */
+    padding: 5px 0;
+    display: block;
+    padding-left: 20px;
+    position: relative;           /* 疑似要素の位置調整のため */
+}
+
+.sub-menu a::before {
+    content: "> ";                /* 各リンクの前に > を追加 */
+    color: #6495ED;                  /* 装飾文字の色 */
+    position: absolute;
+    left: 0;
+}
+.sub-menu a:hover {
+    color: #6495ED;             /* カーソルが来た時のテキスト色 */
+}
+
+
+/*サブメニュー*/
+
+/*フッター*/
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+/*フッター*/
+
+

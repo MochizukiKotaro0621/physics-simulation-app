@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>高校物理の時間</title>
+    <link rel="stylesheet" href="Overview.css"> <!-- 外部CSSファイルをリンク -->
+    
+</head>
+<body>    
+    <div class="container">
+        <h1>高校物理の時間</h1>
+        <!--力学-->
+        <!-- 小さく配置したい見出し -->
+        <p class="small-header">1．力学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1．振り子の運動</p>
+        <h2>1-1．単振り子の概要</h2>
+        <!--参考サイト-->
+        <!--https://rikeilabo.com/pendulum-movement-->
+        <!--https://yuzupa.com/furiko/-->
+        <!--https://www.youtube.com/watch?v=wkiFqukxaM8-->
+        <hr>
+        <h2 class="section-title">学習の目標</h2>
+        <hr>
+        <h3>１．単振り子の基本原理を理解する</h3>
+        <p>振り子の運動の仕組みと、運動の変化に影響を与える要素を把握します。</p>
+        
+        <h3 >２．パラメーターを変えて変化を体験する</h3>
+        <p>実際にパラメータを変えながらシミュレーションすることでどう変化するか確認します</p>
+
+        <h3 >３．理論とシミュレーションの比較を行い、理解を深める</h3>
+        <p>本章では運動方程式から導出を説明します．実際の運動と理論の一致を確認しましょう！</p>
+        <br>
+        <hr>
+        <h2 id="#pendulum_simulate" class="section-title">単振り子とは</h2>
+        <hr>
+        <p>単振り子（または円振り子）とは、重りが糸で吊るされ、重力の影響を受けて一定の面内で揺れる振り子のことです。この運動は、重力と張力のバランスに基づき、周期的な動きを示します。</p>
+        <p>以下のシミュレーションを通じて、まずは単振り子の基本的な特性を観察し、運動を観察してみましょう！</p>
+        <!--シミュレーション-->
+        <!-- シミュレーションエリア -->
+        <div class="flex-container">
+            <!-- Canvasとボタンをまとめるコンテナ -->
+            <div class="canvas-container">
+                <!-- 設定エリア -->
+                <div class="controls">
+                    <label for="theta">初期角度:</label>
+                    <input type="number" id="theta" value="45" max="179" min="-179" step="1" oninput="init()"> [°]
+                    &nbsp;&nbsp;
+
+                    <label for="L">長さ:</label>
+                    <input type="number" id="L" value="100" max="150" min="20" step="10" oninput="init()"> [m]
+                    &nbsp;&nbsp;
+
+                    <label for="damping">空気抵抗:</label>
+                    <input type="number" id="damping" value="1.000" max="1.010" min="1.000" step="0.001" oninput="init()"> [s/m]
+                </div>
+                <!-- Canvas領域 -->
+                <canvas id="myCanvas" width="300" height="300"></canvas>
+                    
+                <!-- Canvasの下に配置するボタン -->
+                <div class="button-group">
+                    <input id="btnAnime" type="button" value="アニメーション開始" onclick="startAnime()">
+                    <input id="btnReset" type="button" value="リセット" onclick="init()">
+                </div>
+            </div>
+            <!-- コントロール領域 -->
+            <div class="controls">
+                <span id="info">時間 : 0.00s</span>
+                <span id="angle">, 角度 : 0.0°</span>
+                
+                <span id="KEnergy">運動エネルギー : 0 J</span>
+                &nbsp;&nbsp;
+                <span id="PEnergy">位置エネルギー : 0 J</span>
+                &nbsp;&nbsp;
+                <span id="TEnergy">運動エネルギー + 位置エネルギー : 0 J</span>            
+                <p>初期位置はマウスドラッグからも変更可能です</p>
+            </div>
+        </div>
+      
+        <hr>
+        <h2 class="section-title">運動方程式</h2>
+        <hr>
+        <div style="text-align: center;">
+            <img src="./運動方程式図.png" alt="運動方程式図" >
+        </div>
+        <p>上図のようにおもりの運動を半径 <i>L</i> の円運動として考えると、運動方程式は接線方向と中心方向に分解して立てることができます。</p>
+        
+        <h3>運動方程式</h3>
+        <p>接線方向の運動方程式:</p>
+        <p><i>m l (d<sup>2</sup>θ/dt<sup>2</sup>) = -m g sinθ</i> &nbsp;&nbsp;…①</p>
+        <p>中心方向の運動方程式:</p>
+        <p><i>m l (dθ/dt)<sup>2</sup> = T - m g cosθ</i></p>
+
+        <h3>加速度の求め方</h3>
+        <p>接線方向の加速度 <i>a<sub>接</sub></i> は、以下のように求めます。</p>
+        <p><i>a<sub>接</sub> = dv<sub>接</sub>/dt</i></p>
+        <p>角速度の定義より、<i>v<sub>接</sub> = l (dθ/dt)</i> なので、</p>
+        <p><i>a<sub>接</sub> = l (d<sup>2</sup>θ/dt<sup>2</sup>)</i> となります。</p>
+
+        <h3>微小角での近似</h3>
+        <p>θ が微小角のとき、<i>sinθ ≒ θ</i> という近似が成り立ちます。これにより、①式は以下のように変形できます。</p>
+        <p><i>d<sup>2</sup>θ/dt<sup>2</sup> = - (g/l) θ</i></p>
+        <p>この式は単振動の運動方程式と同じ形であり、<i>ω = √(g/l)</i> で振動します。</p>
+
+        <h3>テイラー展開による近似の理由</h3>
+        <p><i>sinθ</i> はテイラー展開で <i>sinθ = θ - θ<sup>3</sup>/6 + θ<sup>5</sup>/120 - …</i> と表されます。θ が小さいとき、第二項以上は無視でき、<i>sinθ ≒ θ</i> という近似が成り立ちます。</p>
+
+        <hr>
+        <h2 class="section-title">周期</h2>
+        <hr>
+        <p>単振り子が単振動することがわかったところで、次に振動周期を考えてみましょう。角振動数 <i>ω</i> はすでに求めてあるので、周期は以下の式で表せます。</p>
+
+        <h3>振動周期</h3>
+        <p>単振り子の振動周期 <i>T</i> は、次のように計算されます。</p>
+        <p><i>T = 2π / ω = 2π √(l / g)</i></p>
+
+        <p>この式から、糸の長さ <i>l</i> が長くなると振動周期も長くなることがわかります。この近似解では、おもりの質量 <i>m</i> や振れ幅(角度)は周期に影響を与えません。</p>
+
+        <p>つまり、単振り子の周期は糸の長さにのみ依存します。この特性を「振り子の等時性」と呼びます。入試などで「質量を大きくした場合や振幅を変えた場合の周期の変化」について問われることがあるため、この特性を覚えておきましょう。</p>
+        <div style="height: 50px;"></div>
+        <!-- 前項目・次項目へのボタン -->
+        <div class="navigation-buttons">
+            <a href="../../home/physics-home.html" class="nav-button">前項目へ</a>
+            <a href="../BasicQuiz/BasicQuiz.html" class="nav-button">次項目へ</a>
+        </div>
+        <!-- フッターの前に空白を追加するための要素 -->
+        <div style="height: 200px;"></div>
+    </div>
+
+    
+    <footer>
+        © 2024 高校物理の時間
+    </footer>
+    <script src="Overview.js"></script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>高校物理の時間</title>
+    <link rel="stylesheet" href="BasicQuiz.css"> <!-- 外部CSSファイルをリンク -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>    
+    <div class="container">
+        <h1>高校物理の時間</h1>
+        <!--力学-->
+        <!-- 小さく配置したい見出し -->
+        <p class="small-header">1．力学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1．振り子の運動</p>
+        <h2>1-2．単振り子クイズ1</h2>
+        <!--参考サイト-->
+        <!--https://rikeilabo.com/pendulum-movement-->
+        <!--https://yuzupa.com/furiko/-->
+        <!--https://www.youtube.com/watch?v=wkiFqukxaM8-->
+        <hr>
+        <h2 class="section-title">学習の目標</h2>
+        <hr>
+        <h3>１．単振り子の基本原理を理解する</h3>
+        <p>振り子のパラメータを変えたとき、周期がどう変わるかを理解します。</p>
+        
+        <h3 >２．振り子の動きを予測し、クイズで確認する</h3>
+        <p>学んだ知識をもとに、振り子の動きを予測し、クイズでその理解を確認します。</p>
+        <div style="text-align: center;">
+            <img src="./運動方程式図.png" alt="運動方程式図" >
+        </div>
+        <br>
+        <hr>
+        <h2 class="section-title">基本問題1</h2>
+        <hr><br>
+        <!-- シミュレーションエリア -->
+
+        <!-- Canvasとボタンをまとめるコンテナ -->
+        <div class="canvas-container">
+            <!-- 設定エリア -->
+            <div class="controls">
+                <label for="theta_1">初期角度:</label>
+                <input type="number" id="theta_1" value="45" max="90" min="-90" step="1" oninput="init_1()"> [°]
+                <label for="L1_1">左の振り子の長さ:</label>
+                <input type="number" id="L1_1" value="50" max="70" min="30" step="10" oninput="init_1()"> [m]
+                <label for="L2_1">右の振り子の長さ:</label>
+                <input type="number" id="L2_1" value="100" max="150" min="100" step="10" oninput="init_1()"> [m]
+            </div>
+            <!-- Canvas領域 -->
+            <canvas id="myCanvas_1" width="800" height="300"></canvas>
+                        
+            <!-- Canvasの下に配置するボタン -->
+            <div class="button-group">
+                <!-- 問題1 -->
+                <div>
+                    <p>下図の左右の長さが違い、角度が同じ単振り子について最も適切なものを選んでください。</p>
+                    <p>※選択し回答を押すとアニメーションが開始します(アニメーションは30秒でリセットされます)</p>
+                    <input type="radio" name="q1_1" id="q101" value="A">
+                    <label for="q101">A. 長さが長くなると周期が短くなる</label><br>
+                    <input type="radio" name="q1_1" id="q102" value="B">
+                    <label for="q102">B. 長さが長くなると周期が長くなる</label><br>
+                    <input type="radio" name="q1_1" id="q103" value="C">
+                    <label for="q103">C. 長さに関係なく、周期は変わらない</label><br><br>
+                    <input id="btnAnime_1" class="btn" type="button" value="回答＆アニメーション開始" disabled onclick="startAnime_1()">
+                    <span id="info_1">&nbsp;&nbsp;時間 : 0.00s</span>
+                    <p class="answer_1"></p>
+                </div>
+            </div>
+        </div>
+
+        <script src="BasicQuiz1.js"></script>
+
+        <hr>
+        <h2 class="section-title">基本問題2</h2>
+        <hr><br>
+        <!-- シミュレーションエリア -->
+
+        <!-- Canvasとボタンをまとめるコンテナ -->
+        <div class="canvas-container">
+            <!-- 設定エリア -->
+            <div class="controls">
+                <label for="L_2">単振り子の長さ:</label>
+                <input type="number" id="L_2"  value="100" max="70" min="30" step="10" oninput="init_2()"> [m]
+                <label for="theta1_2">左の振り子の角度:</label>
+                <input type="number" id="theta1_2" value="10" max="20" min="0" step="5" oninput="init_2()"> [°]
+                <label for="theta2_2">右の振り子の角度:</label>
+                <input type="number" id="theta2_2" value="30" max="40" min="20" step="5" oninput="init_2()"> [°]
+            </div>
+            <!-- Canvas領域 -->
+            <canvas id="myCanvas_2" width="800" height="300"></canvas>
+                        
+            <!-- Canvasの下に配置するボタン -->
+            <div class="button-group">
+                <!-- 問題2 -->
+                <div>
+                    <p>下図の左右の振り子について、左の振り子は角度が小さく、右の振り子は角度が大きい場合、周期について最も適切なものを選んでください。</p>
+                    <p>※選択し回答を押すとアニメーションが開始します(アニメーションは30秒でリセットされます)</p>
+                    <input type="radio" name="q1_2" id="q201" value="A">
+                    <label for="q201">A. 左の振り子の周期は右よりも短い</label><br>
+                    <input type="radio" name="q1_2" id="q202" value="B">
+                    <label for="q202">B. 左の振り子の周期は右よりも長い</label><br>
+                    <input type="radio" name="q1_2" id="q203" value="C">
+                    <label for="q203">C. 角度の違いに関わらず、周期は同じ</label><br><br>
+                    <input id="btnAnime_2" class="btn" type="button" value="回答＆アニメーション開始" disabled onclick="startAnime_2()">
+                    <span id="info_2">&nbsp;&nbsp;時間 : 0.00s</span>
+                    <p class="answer_2"></p>
+                </div>
+            </div>
+        </div>
+
+
+        <script src="BasicQuiz2.js"></script>
+
+
+
+        <div style="height: 50px;"></div>
+        <!-- 前項目・次項目へのボタン -->
+        <div class="navigation-buttons">
+            <a href="../Overview/Overview.html" class="nav-button">前項目へ</a>
+            <a href="../AdvancedQuiz/AdvancedQuiz.html" class="nav-button">次項目へ</a>
+        </div>
+        <!-- フッターの前に空白を追加するための要素 -->
+        <div style="height: 200px;"></div>
+    </div>
+    
+    <footer>
+        © 2024 高校物理の時間
+    </footer>
+    
+</body>
+</html>
